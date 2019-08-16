@@ -9,28 +9,35 @@ const Countries = ({ store }) => {
         async function fetchData() {
             const countriesList = await serviceCountries.getAll();
             store.dispatch(countriesAction(countriesList));
-            // console.log(countriesList.map(c => c.name));
+            console.log(countriesList);
         }
         fetchData();
     }, []);
 
-    const countries = store.getState().countries.map(country => country.map(c => c.name));
+    const countries = store.getState().countries;
+    const search = store.getState().search;
+    console.log(countries);
 
     const list = () => {
-        // console.log(store.getState().countries.map(c => c.map(ca => ca.name)));
-        console.log(countries);
+        if (search === "") {
+            return (
+                <div>
+                </div>
+            );
+        }
+        else {
+            return countries.map((country) => {
+                return (
+                    <Country key={country.name} country={country.name} />
+                );
+            }
+            );
+        }
     }
-
     return (
-        <div>
-            <ul>
-                {
-                    countries.map(country =>
-                        <Country key={country} country={country} />
-                    )
-                }
-            </ul>
-        </div>
+        <>
+            {list()}
+        </>
     );
 }
 

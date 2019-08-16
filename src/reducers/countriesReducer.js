@@ -3,7 +3,7 @@ const initialCountriesList = [];
 const countriesReducer = (state = initialCountriesList, action) => {
     switch (action.type) {
         case "NEW_LIST":
-            return [...state, action.data.countries];
+            return state.concat(action.data.countries);
         default:
             return state;
     }

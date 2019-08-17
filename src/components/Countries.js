@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import Country from '../components/Country';
+import CountryInfo from '../components/CountryData';
 import { countriesAction } from '../reducers/countriesReducer'
 import serviceCountries from '../services/countries';
 
@@ -27,13 +28,20 @@ const Countries = ({ store }) => {
                 </div>
             );
         }
-        else {
+        else if(countries.length > 1){
             return countries.map((country) => {
                 return (
                     <Country key={country.name} country={country.name} store={store}/>
                 );
             }
             );
+        }
+        else if(countries.length === 1){
+            return(
+                <>
+                    <CountryInfo store={store} country={countries[0]}/>
+                </>
+            )
         }
     }
     return (

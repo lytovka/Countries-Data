@@ -5,10 +5,8 @@ import { searchAction } from '../reducers/searchReducer'
 const Country = ({ country, store }) => {
 
     const handleCountryClick = (country) => {
-        // store.dispatch(countriesAction([country]));
-        // store.dispatch(searchAction(""));
+        store.dispatch(searchAction(country));
     }
-
     return (
         <>
             <p onClick={() => handleCountryClick(country)}>{country}</p>

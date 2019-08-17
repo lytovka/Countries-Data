@@ -14,21 +14,23 @@ const Countries = ({ store }) => {
         fetchData();
     }, []);
 
-    const countries = store.getState().countries;
     const search = store.getState().search;
-    console.log(countries);
+    const countries = search === "" ? store.getState().countries :
+        store.getState().countries
+            .filter(c => c.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()));
 
     const list = () => {
         if (search === "") {
             return (
                 <div>
+                    <p>Hey there! Discover countries all around the globe!</p>
                 </div>
             );
         }
         else {
             return countries.map((country) => {
                 return (
-                    <Country key={country.name} country={country.name} />
+                    <Country key={country.name} country={country.name} store={store}/>
                 );
             }
             );

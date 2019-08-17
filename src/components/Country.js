@@ -1,16 +1,19 @@
 import React from 'react';
-import { countriesAction } from '../reducers/countriesReducer'
-import { searchAction } from '../reducers/searchReducer'
+import { searchAction } from '../reducers/searchReducer';
 
 const Country = ({ country, store }) => {
 
     const handleCountryClick = (country) => {
         store.dispatch(searchAction(country));
     }
+    const style = {
+        width: 100
+    }
     return (
-        <>
-            <p onClick={() => handleCountryClick(country)}>{country}</p>
-        </>
+        <div onClick={() => handleCountryClick(country.name)}>
+            <img src={country.flag} style={style} alt={"flag of " + country.name}/>
+            <p>{country.name}</p>
+        </div>
     );
 }
 

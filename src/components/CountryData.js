@@ -1,11 +1,11 @@
 import React from 'react';
 
-const CountryData = ({store, country}) => {
-    // const chosenCountry = store.getState().countries[0];
-
-    return(
+const CountryData = ({ country }) => {
+    console.log(country);
+    return (
         <>
             <p>Name: {country.name} </p>
+            <br/>
             <p>Capital: {country.capital}</p>
         </>
     );

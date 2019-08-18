@@ -1,12 +1,14 @@
 import React from 'react';
+import CustomButton from './CustomButton';
 
-const CountryData = ({ country }) => {
+const CountryData = ({ country, store }) => {
     console.log(country);
     return (
         <>
             <p>Name: {country.name} </p>
-            <br/>
+            <br />
             <p>Capital: {country.capital}</p>
+            <CustomButton store={store} name={"go back"} />
         </>
     );
 }

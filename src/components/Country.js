@@ -4,7 +4,7 @@ import { searchAction } from '../reducers/searchReducer';
 const Country = ({ country, store }) => {
 
     const handleCountryClick = (country) => {
-        store.dispatch(searchAction(country));
+        store.dispatch(searchAction("SEARCH",country));
     }
     const style = {
         width: 150

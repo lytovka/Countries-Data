@@ -6,7 +6,6 @@ function App({ store }) {
 
   return (
     <>
-      <h1>hello</h1>
       <Search store={store} />
       <Countries store={store} />
     </>

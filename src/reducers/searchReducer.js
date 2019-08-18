@@ -4,14 +4,16 @@ const searchReducer = (state = initialSearchField, action) => {
     switch (action.type) {
         case "SEARCH":
             return action.data.search;
+        case "SET_TO_DEFAULT":
+            return initialSearchField;
         default:
             return state;
     }
 }
 
-export const searchAction = (search) => {
+export const searchAction = (type, search) => {
     return {
-        type: "SEARCH",
+        type,
         data: { search }
     }
 }

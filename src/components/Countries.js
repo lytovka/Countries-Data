@@ -13,6 +13,7 @@ const useStyles = makeStyles(theme => ({
     },
     paper: {
         width: 200,
+        height: 150,
         padding: theme.spacing(2),
         textAlign: 'center',
         color: theme.palette.text.secondary,
@@ -56,7 +57,7 @@ const Countries = ({ store }) => {
             return (
                 <>
                     <div className={classes.root}>
-                        <Grid container justify="center" alignItems="center" spacing={0}>
+                        <Grid container align="center" justify="center" direction="row" spacing={0}>
                             {countries.map((country) => {
                                 return (
                                     <Grid key={country.name} item xs={4}>

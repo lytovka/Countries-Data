@@ -7,7 +7,7 @@ const Country = ({ country, store }) => {
         store.dispatch(searchAction(country));
     }
     const style = {
-        width: 100
+        width: 150
     }
     return (
         <div onClick={() => handleCountryClick(country.name)}>

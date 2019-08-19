@@ -57,6 +57,7 @@ const Countries = ({ store }) => {
             )
         }
         else if (countries.length > 1) {
+            // console.log(countries.length);
             return (
                 <>
                     <div className={classes.root}>

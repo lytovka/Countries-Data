@@ -11,9 +11,12 @@ const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
     },
+    text:{
+        textAlign:'center',
+    },
     paper: {
-        width: 200,
-        height: 150,
+        width: '20rem',
+        height: '10rem',
         padding: theme.spacing(2),
         textAlign: 'center',
         color: theme.palette.text.secondary,
@@ -41,16 +44,16 @@ const Countries = ({ store }) => {
     const list = () => {
         if (search === "") {
             return (
-                <div>
+                <div className={classes.text}>
                     <p>Hey there! Discover countries all around the globe!</p>
                 </div>
             );
         }
         else if (countries.length > 15) {
             return (
-                <>
+                <div className={classes.text}>
                     <p>Too many matches, keep typing...</p>
-                </>
+                </div>
             )
         }
         else if (countries.length > 1) {

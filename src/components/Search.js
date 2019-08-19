@@ -1,9 +1,14 @@
 import React from 'react';
-import { searchAction } from '../reducers/searchReducer'
+import { searchAction } from '../reducers/searchReducer';
+import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles(theme => ({
+    root:{
+        marginTop: 20,
+        marginBottom: 20,
+    },
     textField: {
         width: 400,
     },
@@ -15,18 +20,23 @@ const Search = ({ store }) => {
 
     const handleOnChange = (event) => {
         console.log(event.target.value);
-        store.dispatch(searchAction("SEARCH",event.target.value));
+        store.dispatch(searchAction("SEARCH", event.target.value));
     }
     return (
-        <TextField
-            id="standard-bare"
-            value={store.getState().search}
-            className={classes.textField}
-            onChange={handleOnChange}
-            placeholder="Type a country..."
-            margin="normal"
-            variant="outlined"
-        />
+        <>
+            <Grid container justify="center" direction="row">
+                <Grid item>
+                    <TextField
+                        id="margin-normal"
+                        value={store.getState().search}
+                        className={classes.textField}
+                        onChange={handleOnChange}
+                        placeholder="Type a country..."
+                        variant="outlined"
+                    />
+                </Grid>
+            </Grid>
+        </>
     );
 }
 

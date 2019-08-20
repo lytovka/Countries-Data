@@ -1,13 +1,28 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import Search from './components/Search';
 import Countries from './components/Countries';
+import Footer from './components/Footer';
+import Paper from '@material-ui/core/Paper';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
+  },
+}));
 
 function App({ store }) {
+  const classes = useStyles();
 
   return (
     <>
-      <Search store={store} />
-      <Countries store={store} />
+      <div className={classes.root}>
+        <Search store={store} />
+        <Countries store={store} />
+        <Footer />
+      </div>
     </>
   );
 }

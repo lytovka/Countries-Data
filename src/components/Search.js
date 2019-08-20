@@ -5,9 +5,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles(theme => ({
+    defaultRoot: {
+        marginTop: "auto",
+    },
     root: {
-        marginTop: 20,
-        marginBottom: 20,
+        marginTop: 10,
     },
     textField: {
         width: "20rem",
@@ -32,18 +34,21 @@ const Search = ({ store }) => {
         console.log("123");
         return (
             <>
-                <Grid container justify="center" direction="row">
-                    <Grid item>
-                        <TextField
-                            id="margin-normal"
-                            value={store.getState().search}
-                            className={classes.textField}
-                            onChange={handleOnChange}
-                            placeholder="Type a country..."
-                            variant="outlined"
-                        />
+                <div className={search === "" ? classes.defaultRoot : classes.root}>
+                    <Grid container justify="center" direction="row">
+                        <Grid item>
+                            <TextField
+                                id="margin-normal"
+                                value={store.getState().search}
+                                className={classes.textField}
+                                onChange={handleOnChange}
+                                placeholder="Type a country..."
+                                variant="outlined"
+                                autoComplete="off"
+                            />
+                        </Grid>
                     </Grid>
-                </Grid>
+                </div>
             </>
         );
     }

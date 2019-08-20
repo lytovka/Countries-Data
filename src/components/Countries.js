@@ -8,9 +8,6 @@ import serviceCountries from '../services/countries';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        display: 'flex',
-        flexDirection: 'row wrap',
-        flexGrow: 1,
         padding: 20,
     },
     text: {
@@ -50,7 +47,7 @@ const Countries = ({ store }) => {
                 </div>
             );
         }
-        else if (countries.length > 15) {
+        else if (countries.length > 12) {
             return (
                 <div className={classes.text}>
                     <p>Too many matches, keep typing...</p>

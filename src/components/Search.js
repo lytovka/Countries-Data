@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
         marginBottom: 20,
     },
     textField: {
-        width: 400,
+        width: "20rem",
     },
 }));
 

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Country from '../components/Country';
 import CountryData from '../components/CountryData';
@@ -9,15 +8,17 @@ import serviceCountries from '../services/countries';
 
 const useStyles = makeStyles(theme => ({
     root: {
+        display: 'flex',
+        flexDirection: 'row wrap',
         flexGrow: 1,
+        padding: 20,
     },
-    text:{
-        textAlign:'center',
+    text: {
+        textAlign: 'center',
     },
     paper: {
         width: '20rem',
         height: '10rem',
-        padding: theme.spacing(2),
         textAlign: 'center',
         color: theme.palette.text.secondary,
     },
@@ -61,14 +62,10 @@ const Countries = ({ store }) => {
             return (
                 <>
                     <div className={classes.root}>
-                        <Grid container align="center" justify="center" direction="row" spacing={0}>
+                        <Grid container align="center" justify="center" direction="row" spacing={4}>
                             {countries.map((country) => {
                                 return (
-                                    <Grid key={country.name} item xs={4}>
-                                        <Paper className={classes.paper}>
-                                            <Country country={country} store={store} />
-                                        </Paper>
-                                    </Grid>
+                                    <Country key={country.name} country={country} store={store} />
                                 )
                             })
                             }

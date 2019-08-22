@@ -6,7 +6,7 @@ import { searchAction } from '../reducers/searchReducer';
 const useStyles = makeStyles(theme => ({
     button: {
         margin: theme.spacing(1),
-        width: 400,
+        width: "80%",
     }
 }))
 

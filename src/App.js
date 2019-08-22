@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Search from './components/Search';
 import Countries from './components/Countries';
 import Footer from './components/Footer';
-import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles(theme => ({
   root: {

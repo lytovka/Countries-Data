@@ -12,26 +12,26 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const CountryData = ({ country, store }) => {
-
-    const classes = useStyles()
-    console.log(country);
-
-    const mapObj = {
+const createMap = (country) => {
+    const area = country.area / 1000000;
+    return {
         latitude: country.latlng[0],
         longitude: country.latlng[1],
         width: "auto",
         height: "30vh",
-        zoom: 3
-    };
+        zoom: (1 / area) + 1,
+    }
+}
 
+const CountryData = ({ country, store }) => {
+    const classes = useStyles();
     return (
         <>
             <CssBaseline />
             <Container maxWidth="md">
                 <ReactMapGl
-                    {...mapObj}
-                    mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_KEY}
+                    {...createMap(country)}
+                    mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
                 >
                 </ReactMapGl>
                 <div className={classes.root}>

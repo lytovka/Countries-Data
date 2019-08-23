@@ -55,7 +55,6 @@ const Countries = ({ store }) => {
             )
         }
         else if (countries.length > 1) {
-            // console.log(countries.length);
             return (
                 <>
                     <div className={classes.root}>
@@ -71,6 +70,11 @@ const Countries = ({ store }) => {
                 </>
             )
         }
+        return (
+            <div className={classes.text}>
+                <p>Sorry, no matches found :(</p>
+            </div>
+        );
     }
 
     const showCountryData = (country) => {

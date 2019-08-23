@@ -39,7 +39,7 @@ const Search = ({ store }) => {
                         <Grid item>
                             <TextField
                                 id="margin-normal"
-                                value={store.getState().search}
+                                value={search}
                                 className={classes.textField}
                                 onChange={handleOnChange}
                                 placeholder="Type a country..."

@@ -1,14 +1,18 @@
-const initialMapView = {};
+const initialMapView = {
+    latitude: 0,
+    longitude: 0,
+    width: "auto",
+    height: "30vh",
+    zoom: 1,
+};
 
 const mapReducer = (state = initialMapView, action) => {
     switch (action.type) {
         case "NEW_MAP_VIEW":
             const newMap = {
+                ...state,
                 latitude: action.data.country.latlng[0],
                 longitude: action.data.country.latlng[1],
-                width: "auto",
-                height: "30vh",
-                zoom: 3,
             }
             return newMap;
         default:

@@ -31,7 +31,6 @@ const Search = ({ store }) => {
     }
 
     const displaySearchField = () => {
-        console.log("123");
         return (
             <>
                 <div className={search === "" ? classes.defaultRoot : classes.root}>

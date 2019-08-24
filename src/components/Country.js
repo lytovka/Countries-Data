@@ -24,9 +24,26 @@ const Country = ({ country, store }) => {
 
     const classes = useStyles();
 
+    const search = store.getState().search;
+    const countries = search === "" ? store.getState().countries :
+        store.getState().countries
+            .filter((c) => {
+                return c.name.toLocaleLowerCase().includes(search.toLocaleLowerCase());
+            });
+
     const handleCountryClick = (country) => {
         store.dispatch(searchAction("SEARCH", country));
     }
+
+    // const checkSpecialCountryCases = (name) => {
+    //         if(name === "Sudan" || name === "South Sudan"){
+    //             countries.filter(c => c.name.toLocaleLowerCase() === search.toLocaleLowerCase());
+    //             console.log(countries);
+    //             console.log('23131');
+    //         }
+    //         else return;
+    //     }
+
 
     return (
         <Grid item xs={12} sm={12} md={4} lg={3}>

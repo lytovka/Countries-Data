@@ -29,7 +29,6 @@ const Countries = ({ store }) => {
         async function fetchData() {
             const countriesList = await serviceCountries.getAll();
             store.dispatch(countriesAction(countriesList));
-            console.log(countriesList);
         }
         fetchData();
     }, []);
@@ -46,6 +45,9 @@ const Countries = ({ store }) => {
                     <p>Hey there! Discover countries all around the globe!</p>
                 </div>
             );
+        }
+        else if (search.toLocaleLowerCase() === "sudan" || search.toLocaleLowerCase() === "ireland") {
+            return displaySpecialCases(search);
         }
         else if (countries.length > 12) {
             return (
@@ -75,6 +77,11 @@ const Countries = ({ store }) => {
                 <p>Sorry, no matches found :(</p>
             </div>
         );
+    }
+
+    const displaySpecialCases = (search) => {
+        return showCountryData(countries.find(c => c.name.toLocaleLowerCase().startsWith(search.toLocaleLowerCase())));
+
     }
 
     const showCountryData = (country) => {

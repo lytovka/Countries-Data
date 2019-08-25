@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Search = ({ store }) => {
-
+    const specialCaseCountries = ["sudan", "ireland", "niger", "dominica", "guinea"]
     const classes = useStyles();
 
     const search = store.getState().search;
@@ -54,7 +54,7 @@ const Search = ({ store }) => {
 
     return (
         <>
-            {countries.length !== 1 ? displaySearchField() : ""}
+            {(countries.length !== 1 && specialCaseCountries.indexOf(search.toLocaleLowerCase()) === -1) ? displaySearchField() : ""}
         </>
     );
 }

@@ -46,7 +46,8 @@ const Countries = ({ store }) => {
                 </div>
             );
         }
-        else if (search.toLocaleLowerCase() === "sudan" || search.toLocaleLowerCase() === "ireland") {
+        else if (search.toLocaleLowerCase() === "sudan" || search.toLocaleLowerCase() === "ireland" 
+        || search.toLocaleLowerCase() === "dominica" || search.toLocaleLowerCase() === "guinea" || search.toLocaleLowerCase() === "niger") {
             return displaySpecialCases(search);
         }
         else if (countries.length > 12) {
@@ -80,8 +81,9 @@ const Countries = ({ store }) => {
     }
 
     const displaySpecialCases = (search) => {
-        return showCountryData(countries.find(c => c.name.toLocaleLowerCase().startsWith(search.toLocaleLowerCase())));
-
+        const countryObj = store.getState().countries.filter(c => c.name.toLocaleLowerCase().startsWith(search.toLocaleLowerCase()))[0];
+        console.log(countryObj);
+        return showCountryData(countryObj);
     }
 
     const showCountryData = (country) => {

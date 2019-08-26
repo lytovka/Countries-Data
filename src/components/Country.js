@@ -24,7 +24,6 @@ const Country = ({ country, store }) => {
 
     const classes = useStyles();
 
-    const search = store.getState().search;
     const handleCountryClick = (country) => {
         store.dispatch(searchAction("SEARCH", country));
     }

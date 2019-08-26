@@ -26,7 +26,7 @@ const Countries = ({ store }) => {
     const classes = useStyles();
 
     useEffect(() => {
-        async function fetchData() {
+        const fetchData = async () => {
             const countriesList = await serviceCountries.getAll();
             store.dispatch(countriesAction(countriesList));
         }
@@ -46,8 +46,9 @@ const Countries = ({ store }) => {
                 </div>
             );
         }
-        else if (search.toLocaleLowerCase() === "sudan" || search.toLocaleLowerCase() === "ireland" 
-        || search.toLocaleLowerCase() === "dominica" || search.toLocaleLowerCase() === "guinea" || search.toLocaleLowerCase() === "niger") {
+        else if (search.toLocaleLowerCase() === "sudan" || search.toLocaleLowerCase() === "ireland"
+            || search.toLocaleLowerCase() === "dominica" || search.toLocaleLowerCase() === "guinea" || search.toLocaleLowerCase() === "niger" ||
+            search.toLocaleLowerCase() === "congo") {
             return displaySpecialCases(search);
         }
         else if (countries.length > 12) {

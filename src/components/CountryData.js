@@ -3,8 +3,8 @@ import ReactMapGl from 'react-map-gl';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
-import { mapAction } from '../reducers/mapReducer';
 import CustomButton from './CustomButton';
+import TopBar from '../components/TopBar';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -29,6 +29,7 @@ const CountryData = ({ country, store }) => {
     return (
         <>
             <CssBaseline />
+            <TopBar />
             <Container maxWidth="md">
                 <ReactMapGl
                     {...map}

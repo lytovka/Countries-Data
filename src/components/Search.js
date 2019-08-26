@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Search = ({ store }) => {
-    const specialCaseCountries = ["sudan", "ireland", "niger", "dominica", "guinea"]
+    const specialCaseCountries = ["sudan", "ireland", "niger", "dominica", "guinea", "congo"]
     const classes = useStyles();
 
     const search = store.getState().search;

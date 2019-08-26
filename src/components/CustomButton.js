@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 import { searchAction } from '../reducers/searchReducer';
 
 const useStyles = makeStyles(theme => ({
@@ -18,9 +19,13 @@ const CustomButton = ({ name, store }) => {
     }
 
     return (
-        <Button variant="outlined" color="primary" className={classes.button} onClick={handleButtonClick}>
-            {name}
-        </Button>
+        <>
+            <Grid align="center">
+                <Button variant="outlined" color="primary" className={classes.button} onClick={handleButtonClick}>
+                    {name}
+                </Button>
+            </Grid>
+        </>
     );
 }
 

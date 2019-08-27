@@ -7,12 +7,13 @@ import Container from '@material-ui/core/Container';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
+import { searchAction } from '../reducers/searchReducer';
+
 
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
-        maxHeight: "10vh",
-        backgroundColor: "",
+        maxHeight: "5vh",
     },
     menuButton: {
         marginRight: theme.spacing(2),
@@ -23,9 +24,13 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const TopBar = () => {
+const TopBar = ({ store, caption }) => {
 
     const classes = useStyles();
+
+    const handleArrowBackClick = () => {
+        store.dispatch(searchAction("SET_TO_DEFAULT", ""));
+    }
 
     return (
         <div className={classes.root}>
@@ -37,12 +42,13 @@ const TopBar = () => {
                             className={classes.menuButton}
                             color="inherit"
                             aria-label="menu"
+                            onClick={handleArrowBackClick}
                         >
                             <ArrowBackIcon />
                         </IconButton>
                         <Typography variant="h6" className={classes.title}>
-                            News
-                    </Typography>
+                            {caption}
+                        </Typography>
                     </Toolbar>
                 </Container>
             </AppBar>

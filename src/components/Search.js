@@ -3,6 +3,7 @@ import { searchAction } from '../reducers/searchReducer';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import Togglable from '../components/Togglable';
 
 const useStyles = makeStyles(theme => ({
     defaultRoot: {
@@ -26,14 +27,13 @@ const Search = ({ store }) => {
             .filter(c => c.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()));
 
     const handleOnChange = (event) => {
-        console.log(event.target.value);
         store.dispatch(searchAction("SEARCH", event.target.value));
     }
 
-    const displaySearchField = () => {
-        return (
-            <>
-                <div className={search === "" ? classes.defaultRoot : classes.root}>
+    const searchComponent = () => {
+        if ((countries.length !== 1 && specialCaseCountries.indexOf(search.toLocaleLowerCase()) === -1)) {
+            return (
+                <>
                     <Grid container justify="center" direction="row">
                         <Grid item>
                             <TextField
@@ -47,14 +47,22 @@ const Search = ({ store }) => {
                             />
                         </Grid>
                     </Grid>
-                </div>
+                </>
+            );
+        }
+        else return (
+            <>
             </>
         );
     }
 
     return (
         <>
-            {(countries.length !== 1 && specialCaseCountries.indexOf(search.toLocaleLowerCase()) === -1) ? displaySearchField() : ""}
+            <div className={search === "" ? classes.defaultRoot : classes.root}>
+                <Togglable store={store}>
+                    {searchComponent()}
+                </Togglable>
+            </div>
         </>
     );
 }

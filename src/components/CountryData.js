@@ -29,15 +29,15 @@ const CountryData = ({ country, store }) => {
     return (
         <>
             <CssBaseline />
-            <TopBar />
+            <TopBar store={store} caption={country.name} />
+            <ReactMapGl
+                {...map}
+                mapStyle="mapbox://styles/lytovka/cjzoa990q2hd71co6gvj21naq"
+                onViewportChange={(map) => setMap(map)}
+                mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+            >
+            </ReactMapGl>
             <Container maxWidth="md">
-                <ReactMapGl
-                    {...map}
-                    mapStyle="mapbox://styles/lytovka/cjzoa990q2hd71co6gvj21naq"
-                    onViewportChange={(map) => setMap(map)}
-                    mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
-                >
-                </ReactMapGl>
                 <div className={classes.root}>
                     <p>Name: {country.name} </p>
                     <p>Capital: {country.capital}</p>

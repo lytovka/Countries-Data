@@ -83,7 +83,6 @@ const Countries = ({ store }) => {
 
     const displaySpecialCases = (search) => {
         const countryObj = store.getState().countries.filter(c => c.name.toLocaleLowerCase().startsWith(search.toLocaleLowerCase()))[0];
-        console.log(countryObj);
         return showCountryData(countryObj);
     }
 

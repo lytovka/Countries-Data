@@ -38,6 +38,8 @@ const Search = ({ store }) => {
                         <Grid item>
                             <TextField
                                 id="margin-normal"
+                                // error={countries.length === 0 ? true : false}
+                                style={{ textAlign: "right" }}
                                 value={search}
                                 className={classes.textField}
                                 onChange={handleOnChange}

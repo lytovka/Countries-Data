@@ -30,7 +30,7 @@ const Country = ({ country, store }) => {
     }
 
     return (
-        <Grid item xs={12} sm={12} md={4} lg={3}>
+        <Grid item xs={12} sm={6} md={4} lg={3}>
             <Paper className={classes.paper}>
                 <div style={{ backgroundColor: "7e57c2" }} onClick={() => handleCountryClick(country.name)}>
                     <img src={country.flag} className={classes.image} alt={"flag of " + country.name} />

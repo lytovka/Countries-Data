@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import HelpIcon from '@material-ui/icons/Help';
 
 import { searchAction } from '../reducers/searchReducer';
 
@@ -49,6 +50,15 @@ const TopBar = ({ store, caption }) => {
                         <Typography variant="h6" className={classes.title}>
                             {caption}
                         </Typography>
+                        <IconButton
+                            edge="start"
+                            className={classes.menuButton}
+                            color="inherit"
+                            aria-label="menu"
+                            href={`https://en.wikipedia.org/wiki/${caption}`}
+                        >
+                            <HelpIcon />
+                        </IconButton>
                     </Toolbar>
                 </Container>
             </AppBar>

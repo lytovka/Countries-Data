@@ -10,7 +10,6 @@ import TopBar from '../components/TopBar';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        // backgroundColor: "#eeeeee",
         height: "auto",
     },
 }));
@@ -21,7 +20,7 @@ const CountryData = ({ country, store }) => {
     const [map, setMap] = useState({
         latitude: country.latlng[0],
         longitude: country.latlng[1],
-        width: "auto",
+        width: "100%",
         height: "30vh",
         zoom: country.area ? 3 : 5,
     })

@@ -1,6 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
-import { useStylesForCountries } from '../styles/styles';
 import { searchAction } from '../reducers/searchReducer';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -21,12 +21,12 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Country = ({ country, store }) => {
+const Country = ({ country, searchAction }) => {
 
     const classes = useStyles();
 
     const handleCountryClick = (country) => {
-        store.dispatch(searchAction("SEARCH", country));
+        searchAction("SEARCH", country);
     }
 
     return (
@@ -41,4 +41,7 @@ const Country = ({ country, store }) => {
     );
 }
 
-export default Country
+export default connect(
+    null,
+    { searchAction }
+)(Country)

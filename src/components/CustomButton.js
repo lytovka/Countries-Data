@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
@@ -11,11 +12,11 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-const CustomButton = ({ name, store }) => {
+const CustomButton = ({ name, searchAction }) => {
     const classes = useStyles();
 
     const handleButtonClick = () => {
-        store.dispatch(searchAction("SET_TO_DEFAULT", ""));
+        searchAction("SET_TO_DEFAULT", "");
     }
 
     return (
@@ -29,4 +30,7 @@ const CustomButton = ({ name, store }) => {
     );
 }
 
-export default CustomButton;
+export default connect(
+    null,
+    { searchAction }
+)(CustomButton)

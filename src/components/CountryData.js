@@ -7,15 +7,13 @@ import Paper from '@material-ui/core/Paper';
 import CustomButton from './CustomButton';
 import TopBar from '../components/TopBar';
 
-
 const useStyles = makeStyles(theme => ({
     root: {
         height: "auto",
     },
 }));
 
-
-const CountryData = ({ country, store }) => {
+const CountryData = ({ country }) => {
 
     const [map, setMap] = useState({
         latitude: country.latlng[0],
@@ -30,7 +28,7 @@ const CountryData = ({ country, store }) => {
     return (
         <>
             <CssBaseline />
-            <TopBar store={store} caption={country.name} />
+            <TopBar caption={country.name} />
             <ReactMapGl
                 {...map}
                 mapStyle="mapbox://styles/lytovka/cjzoa990q2hd71co6gvj21naq"
@@ -46,7 +44,7 @@ const CountryData = ({ country, store }) => {
                     <p>Population: {country.population ? country.population : "N/A"}</p>
                     <p>Demonym: {country.demonym ? country.demonym : "N/A"}</p>
                     <p>Border: {country.borders.length > 0 ? country.borders.map(b => b).join(", ") : "N/A"}</p>
-                    <CustomButton store={store} name={"go back"} />
+                    <CustomButton name={"go back"} />
                 </Paper>
             </Container>
         </>

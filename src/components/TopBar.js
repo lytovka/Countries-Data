@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -25,12 +26,12 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const TopBar = ({ store, caption }) => {
+const TopBar = ({ caption, searchAction }) => {
 
     const classes = useStyles();
 
     const handleArrowBackClick = () => {
-        store.dispatch(searchAction("SET_TO_DEFAULT", ""));
+        searchAction("SET_TO_DEFAULT", "");
     }
 
     return (
@@ -67,4 +68,7 @@ const TopBar = ({ store, caption }) => {
 
 }
 
-export default TopBar;
+export default connect(
+    null,
+    {searchAction}
+)(TopBar)

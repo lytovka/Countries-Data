@@ -12,14 +12,15 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function App({ store }) {
+function App(props) {
+  const store = props.store;
   const classes = useStyles();
 
   return (
     <>
       <div className={classes.root}>
         <Search store={store} />
-        <Countries store={store} />
+        <Countries />
         <Footer />
       </div>
     </>

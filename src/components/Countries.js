@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Country from '../components/Country';
 import CountryData from '../components/CountryData';
-import { countriesAction } from '../reducers/countriesReducer'
+import { countriesAction } from '../reducers/countriesReducer';
 import serviceCountries from '../services/countries';
 
 const useStyles = makeStyles(theme => ({
@@ -21,21 +22,21 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Countries = ({ store }) => {
+const Countries = (props) => {
 
     const classes = useStyles();
 
     useEffect(() => {
         const fetchData = async () => {
             const countriesList = await serviceCountries.getAll();
-            store.dispatch(countriesAction(countriesList));
+            props.countriesAction(countriesList);
         }
         fetchData();
     }, []);
 
-    const search = store.getState().search;
-    const countries = search === "" ? store.getState().countries :
-        store.getState().countries
+    const search = props.search;
+    const countries = search === "" ? props.countries :
+        props.countries
             .filter(c => c.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()));
 
     const list = () => {
@@ -65,7 +66,7 @@ const Countries = ({ store }) => {
                         <Grid container align="center" justify="center" direction="row" spacing={4}>
                             {countries.map((country) => {
                                 return (
-                                    <Country key={country.name} country={country} store={store} />
+                                    <Country key={country.name} country={country} store={props.store}/>
                                 )
                             })
                             }
@@ -82,14 +83,14 @@ const Countries = ({ store }) => {
     }
 
     const displaySpecialCases = (search) => {
-        const countryObj = store.getState().countries.filter(c => c.name.toLocaleLowerCase().startsWith(search.toLocaleLowerCase()))[0];
+        const countryObj = props.countries.filter(c => c.name.toLocaleLowerCase().startsWith(search.toLocaleLowerCase()))[0];
         return showCountryData(countryObj);
     }
 
     const showCountryData = (country) => {
         return (
             <>
-                <CountryData store={store} country={country} />
+                <CountryData store={props.store} country={country} />
             </>
         )
     }
@@ -101,4 +102,18 @@ const Countries = ({ store }) => {
     );
 }
 
-export default Countries
+const mapStateToProps = (state) => {
+    return {
+        search: state.search,
+        countries: state.countries
+    }
+}
+
+const mapDispatchToProps = {
+    countriesAction,
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Countries)

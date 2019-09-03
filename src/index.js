@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
+import { BrowserRouter as Router} from 'react-router-dom';
 import App from './App';
 import { createStore, combineReducers } from "redux";
 import searchReducer from "./reducers/searchReducer";
@@ -16,7 +18,7 @@ const reducer = combineReducers({
 const store = createStore(reducer)
 
 const render = () => {
-    ReactDOM.render(<App store={store} />, document.getElementById('root'));
+    ReactDOM.render(<Provider store={store}><Router><App store={store} /></Router></Provider>, document.getElementById('root'));
 }
 
 render();

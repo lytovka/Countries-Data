@@ -1,10 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const Togglable = ({store, children}) => {
+const Togglable = (props) => {
 
-    const search = store.getState().search;
-    const countries = search === "" ? store.getState().countries :
-        store.getState().countries
+    const search = props.search;
+    const countries = search === "" ? props.countries :
+        props.countries
             .filter(c => c.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()));
 
 
@@ -13,11 +14,20 @@ const Togglable = ({store, children}) => {
     return (
         <>
             <div style={hideElement}>
-                {children}
+                {props.children}
             </div>
         </>
     );
 
 }
 
-export default Togglable;
+const mapStateToProps = (state) => {
+    return {
+        search: state.search,
+        countries: state.countries
+    }
+}
+export default connect(
+    mapStateToProps,
+    null,
+)(Togglable)

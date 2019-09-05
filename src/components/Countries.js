@@ -109,11 +109,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = {
-    countriesAction,
-}
-
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    {countriesAction}
 )(Countries)

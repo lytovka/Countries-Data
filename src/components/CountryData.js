@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import ReactMapGl from 'react-map-gl';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -6,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import CustomButton from './CustomButton';
 import TopBar from '../components/TopBar';
+import { mapAction } from '../reducers/mapReducer';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -51,4 +53,20 @@ const CountryData = ({ country }) => {
     );
 }
 
-export default CountryData;
+// const mapCoordinatesToShow = ({country, map}) => {
+//     console.log(country)
+//     return {
+//         ...map,
+//         latitude: country.latlng[0],
+//         longitude: country.latlng[1]
+//     }
+// }
+
+// const mapStateToProps = (state) => {
+//     console.log(state);
+//     return {
+//         map: mapCoordinatesToShow(state)
+//     }
+// }
+
+export default CountryData

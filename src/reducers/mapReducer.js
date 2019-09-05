@@ -9,21 +9,16 @@ const initialMapView = {
 const mapReducer = (state = initialMapView, action) => {
     switch (action.type) {
         case "NEW_MAP_VIEW":
-            const newMap = {
-                ...state,
-                latitude: action.data.country.latlng[0],
-                longitude: action.data.country.latlng[1],
-            }
-            return newMap;
+            return action.map;
         default:
             return state;
     }
 }
 
-export const mapAction = (country) => {
+export const mapAction = (map) => {
     return {
         type: "NEW_MAP_VIEW",
-        data: { country },
+        map,
     }
 }
 

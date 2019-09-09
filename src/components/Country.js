@@ -1,29 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { makeStyles } from '@material-ui/core/styles';
 import { searchAction } from '../reducers/searchReducer';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-
-const useStyles = makeStyles(theme => ({
-    card: {
-        backgroundColor: "7e57c2",
-    },
-    image: {
-        width: "10rem",
-        borderRadius: "10%",
-    },
-    paper: {
-        width: '15rem',
-        height: '10rem',
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-    },
-}));
+import { countryCard } from '../styles/styles';
 
 const Country = ({ country, searchAction }) => {
 
-    const classes = useStyles();
+    const classes = countryCard();
 
     const handleCountryClick = (country) => {
         searchAction("SEARCH", country);

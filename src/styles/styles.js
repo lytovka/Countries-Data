@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-export const useStylesForCountries = makeStyles(theme => ({
+export const countryCard = makeStyles(theme => ({
     card: {
         backgroundColor: "7e57c2",
     },
@@ -15,3 +15,10 @@ export const useStylesForCountries = makeStyles(theme => ({
         color: theme.palette.text.secondary,
     },
 }));
+
+export const buttonStyles = makeStyles(theme => ({
+    button: {
+        margin: theme.spacing(1),
+        width: "80%",
+    }
+}))

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Search from './components/Search';
 import Countries from './components/Countries';
 import Footer from './components/Footer';
+import { countriesAction } from './reducers/countriesReducer';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -12,9 +14,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function App() {
+function App(props) {
 
   const classes = useStyles();
+
+  useEffect(() => {
+    props.countriesAction();
+  }, []);
 
   return (
     <>
@@ -27,4 +33,7 @@ function App() {
   );
 }
 
-export default App;
+export default connect(
+  null,
+  { countriesAction },
+)(App)

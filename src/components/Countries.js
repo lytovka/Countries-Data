@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Country from '../components/Country';
 import CountryData from '../components/CountryData';
 import { countriesAction } from '../reducers/countriesReducer';
-import serviceCountries from '../services/countries';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -26,13 +25,13 @@ const Countries = (props) => {
 
     const classes = useStyles();
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const countriesList = await serviceCountries.getAll();
-            props.countriesAction(countriesList);
-        }
-        fetchData();
-    }, []);
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const countriesList = await serviceCountries.getAll();
+    //         props.countriesAction(countriesList);
+    //     }
+    //     fetchData();
+    // }, []);
 
     const search = props.search;
     const countries = search === "" ? props.countries :

@@ -57,7 +57,6 @@ const Search = (props) => {
             </>
         );
     }
-
     return (
         <>
             <div className={search === "" ? classes.defaultRoot : classes.root}>
@@ -79,4 +78,6 @@ export default connect(
     mapStateToProps,
     { searchAction }
 )(Search)
+
+
 

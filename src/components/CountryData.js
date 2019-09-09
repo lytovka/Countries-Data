@@ -1,19 +1,11 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
 import ReactMapGl from 'react-map-gl';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import CustomButton from './CustomButton';
 import TopBar from '../components/TopBar';
-import { mapAction } from '../reducers/mapReducer';
-
-const useStyles = makeStyles(theme => ({
-    root: {
-        height: "auto",
-    },
-}));
+import { countryDataStyles } from '../styles/styles';
 
 const CountryData = ({ country }) => {
 
@@ -25,7 +17,7 @@ const CountryData = ({ country }) => {
         zoom: country.area ? 3 : 5,
     })
 
-    const classes = useStyles();
+    const classes = countryDataStyles();
 
     return (
         <>
@@ -52,21 +44,5 @@ const CountryData = ({ country }) => {
         </>
     );
 }
-
-// const mapCoordinatesToShow = ({country, map}) => {
-//     console.log(country)
-//     return {
-//         ...map,
-//         latitude: country.latlng[0],
-//         longitude: country.latlng[1]
-//     }
-// }
-
-// const mapStateToProps = (state) => {
-//     console.log(state);
-//     return {
-//         map: mapCoordinatesToShow(state)
-//     }
-// }
 
 export default React.memo(CountryData)

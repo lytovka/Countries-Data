@@ -1,22 +1,14 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { makeStyles } from '@material-ui/core/styles';
 import Search from './components/Search';
 import Countries from './components/Countries';
 import Footer from './components/Footer';
 import { countriesAction } from './reducers/countriesReducer';
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    minHeight: '100vh',
-  },
-}));
+import { appStyles } from './styles/styles';
 
 function App(props) {
 
-  const classes = useStyles();
+  const classes = appStyles();
 
   useEffect(() => {
     props.countriesAction();

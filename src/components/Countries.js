@@ -1,37 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Country from '../components/Country';
 import CountryData from '../components/CountryData';
 import { countriesAction } from '../reducers/countriesReducer';
-
-const useStyles = makeStyles(theme => ({
-    root: {
-        padding: 20,
-    },
-    text: {
-        textAlign: 'center',
-    },
-    paper: {
-        width: '20rem',
-        height: '10rem',
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-    },
-}));
+import { countriesStyles } from '../styles/styles';
 
 const Countries = (props) => {
 
-    const classes = useStyles();
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const countriesList = await serviceCountries.getAll();
-    //         props.countriesAction(countriesList);
-    //     }
-    //     fetchData();
-    // }, []);
+    const classes = countriesStyles();
 
     const search = props.search;
     const countries = search === "" ? props.countries :
@@ -65,7 +42,7 @@ const Countries = (props) => {
                         <Grid container align="center" justify="center" direction="row" spacing={4}>
                             {countries.map((country) => {
                                 return (
-                                    <Country key={country.name} country={country} store={props.store}/>
+                                    <Country key={country.name} country={country} store={props.store} />
                                 )
                             })
                             }
@@ -110,5 +87,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
     mapStateToProps,
-    {countriesAction}
+    { countriesAction }
 )(Countries)

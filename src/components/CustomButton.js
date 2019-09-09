@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { searchAction } from '../reducers/searchReducer';
-
 import { buttonStyles } from '../styles/styles';
 
 const CustomButton = ({ name, searchAction }) => {

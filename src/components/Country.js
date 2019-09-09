@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { searchAction } from '../reducers/searchReducer';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import { countryCard } from '../styles/styles';
+import { countryCardStyles } from '../styles/styles';
 
 const Country = ({ country, searchAction }) => {
 
-    const classes = countryCard();
+    const classes = countryCardStyles();
 
     const handleCountryClick = (country) => {
         searchAction("SEARCH", country);

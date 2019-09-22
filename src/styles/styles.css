@@ -1,0 +1,9 @@
+#country-info-wrapper{
+    display: flex;
+    flex-flow: column;
+    flex-basis: 100%;
+}
+
+#country-info-wrapper > p {
+    color: red
+}

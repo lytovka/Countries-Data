@@ -2,25 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { searchAction } from '../reducers/searchReducer';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Togglable from '../components/Togglable';
-
-const useStyles = makeStyles(theme => ({
-    defaultRoot: {
-        marginTop: "auto",
-    },
-    root: {
-        marginTop: 10,
-    },
-    textField: {
-        width: "20rem",
-    },
-}));
+import { searchStyles } from '../styles/styles';
 
 const Search = (props) => {
     const specialCaseCountries = ["sudan", "ireland", "niger", "dominica", "guinea", "congo"]
-    const classes = useStyles();
+    const classes = searchStyles();
 
     const search = props.search;
     const countries = search === "" ? props.countries :

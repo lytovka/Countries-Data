@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import ReactMapGl from 'react-map-gl';
+import serviceCountries from '../services/countries';
+import { holidaysAction } from '../reducers/holidaysReducer';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
 import CustomButton from './CustomButton';
 import TopBar from '../components/TopBar';
 import { countryDataStyles } from '../styles/styles';
+import "../styles/styles.css";
 
-const CountryData = ({ country }) => {
+const CountryData = ({ country, holidays, holidaysAction}) => {
 
     const [map, setMap] = useState({
         latitude: country.latlng[0],
@@ -16,6 +20,18 @@ const CountryData = ({ country }) => {
         height: "30vh",
         zoom: country.area ? 3 : 5,
     })
+
+    const holidaysOfCountry = holidays;
+
+    useEffect(() => {
+        async function fetchData() {
+            // console.log("country", country.alpha2Code);
+            const holidays = await serviceCountries.getCountryHolidays(country.alpha2Code);
+            console.log(holidays);
+            holidaysAction("FIND_HOLIDAYS", holidays);
+        }
+        fetchData();
+    }, []);
 
     const classes = countryDataStyles();
 
@@ -31,7 +47,7 @@ const CountryData = ({ country }) => {
             >
             </ReactMapGl>
             <Container maxWidth="md">
-                <Paper className={classes.root}>
+                <Paper id="country-info-wrapper" className={classes.root}>
                     <p>Name: {country.name} </p>
                     <p>Capital: {country.capital ? country.capital : "N/A"}</p>
                     <p>Region: {country.region ? country.region : "N/A"}</p>
@@ -45,4 +61,12 @@ const CountryData = ({ country }) => {
     );
 }
 
-export default React.memo(CountryData)
+const mapStateToProps = (state) => {
+    return {
+        holidays: state.holidays
+    }
+}
+export default connect(
+    mapStateToProps,
+    { holidaysAction }
+)(CountryData)

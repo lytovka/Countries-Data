@@ -2,11 +2,11 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export const appStyles = makeStyles(theme => ({
     root: {
-      display: 'flex',
-      flexDirection: 'column',
-      minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
     },
-  }));
+}));
 
 export const footerStyles = makeStyles(theme => ({
     footer: {
@@ -53,9 +53,35 @@ export const countryCardStyles = makeStyles(theme => ({
     },
 }));
 
+export const searchStyles = makeStyles(theme => ({
+    defaultRoot: {
+        marginTop: "auto",
+    },
+    root: {
+        marginTop: 10,
+    },
+    textField: {
+        width: "20rem",
+    },
+}));
+
 export const buttonStyles = makeStyles(theme => ({
     button: {
         margin: theme.spacing(1),
         width: "80%",
     }
 }))
+
+export const topBarStyles = makeStyles(theme => ({
+    root: {
+        flexGrow: 1,
+        maxHeight: "5vh",
+    },
+    menuButton: {
+        marginRight: theme.spacing(2),
+    },
+    title: {
+        flexGrow: 1,
+        textAlign: "center",
+    },
+}));

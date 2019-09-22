@@ -1,11 +1,9 @@
 import serviceCountries from '../services/countries';
 
-const initialCountriesList = [];
-
-const countriesReducer = (state = initialCountriesList, action) => {
+const countriesReducer = (state = [], action) => {
     switch (action.type) {
         case "NEW_LIST":
-            return [].concat(action.data.newCountriesList);
+            return (action.data.newCountriesList);
         case "FIND_COUNTRY":
             const country = state.find(c => c.name === action.countryName)
             return country

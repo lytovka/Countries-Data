@@ -42,7 +42,7 @@ const Countries = (props) => {
                         <Grid container align="center" justify="center" direction="row" spacing={4}>
                             {countries.map((country) => {
                                 return (
-                                    <Country key={country.name} country={country} store={props.store} />
+                                    <Country key={country.name} country={country} />
                                 )
                             })
                             }
@@ -64,16 +64,21 @@ const Countries = (props) => {
     }
 
     const showCountryData = (country) => {
+        console.log('found olololo')
         return (
             <>
-                <CountryData store={props.store} country={country} />
+                <CountryData country={country} />
             </>
         )
     }
 
     return (
         <>
-            {countries.length === 1 ? showCountryData(countries[0]) : list()}
+            {
+                countries.length === 1 ?
+                    showCountryData(countries[0]) :
+                    list()
+            }
         </>
     );
 }

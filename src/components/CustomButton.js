@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { searchAction } from '../reducers/searchReducer';
 import { buttonStyles } from '../styles/styles';
+import { Link } from 'react-router-dom';
 
 const CustomButton = ({ name, searchAction }) => {
     const classes = buttonStyles();
@@ -15,9 +16,11 @@ const CustomButton = ({ name, searchAction }) => {
     return (
         <>
             <Grid align="center">
-                <Button variant="outlined" color="primary" className={classes.button} onClick={handleButtonClick}>
-                    {name}
-                </Button>
+                <Link to="/home">
+                    <Button variant="outlined" color="primary" className={classes.button} onClick={handleButtonClick}>
+                        {name}
+                    </Button>
+                </Link>
             </Grid>
         </>
     );

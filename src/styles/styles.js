@@ -31,11 +31,6 @@ export const countriesStyles = makeStyles(theme => ({
     },
 }));
 
-export const countryDataStyles = makeStyles(theme => ({
-    root: {
-        height: "auto",
-    },
-}));
 
 export const countryCardStyles = makeStyles(theme => ({
     card: {

@@ -5,7 +5,7 @@ import Countries from './components/Countries';
 import Footer from './components/Footer';
 import { countriesAction } from './reducers/countriesReducer';
 import { appStyles } from './styles/styles';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 function App(props) {
 

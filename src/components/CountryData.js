@@ -5,13 +5,11 @@ import serviceCountries from '../services/countries';
 import { holidaysAction } from '../reducers/holidaysReducer';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Paper from '@material-ui/core/Paper';
 import CustomButton from './CustomButton';
 import TopBar from '../components/TopBar';
-import { countryDataStyles } from '../styles/styles';
 import "../styles/styles.css";
 
-const CountryData = ({ country, holidays, holidaysAction}) => {
+const CountryData = ({ country, holidays, holidaysAction }) => {
 
     const [map, setMap] = useState({
         latitude: country.latlng[0],
@@ -24,16 +22,13 @@ const CountryData = ({ country, holidays, holidaysAction}) => {
     const holidaysOfCountry = holidays;
 
     useEffect(() => {
-        async function fetchData() {
-            // console.log("country", country.alpha2Code);
-            const holidays = await serviceCountries.getCountryHolidays(country.alpha2Code);
-            console.log(holidays);
-            holidaysAction("FIND_HOLIDAYS", holidays);
-        }
-        fetchData();
+        // async function fetchData() {
+        //     const holidays = await serviceCountries.getCountryHolidays(country.alpha2Code);
+        //     console.log(holidays);
+        //     holidaysAction("FIND_HOLIDAYS", holidays);
+        // }
+        // // fetchData();
     }, []);
-
-    const classes = countryDataStyles();
 
     return (
         <>
@@ -47,15 +42,26 @@ const CountryData = ({ country, holidays, holidaysAction}) => {
             >
             </ReactMapGl>
             <Container maxWidth="md">
-                <Paper id="country-info-wrapper" className={classes.root}>
-                    <p>Name: {country.name} </p>
-                    <p>Capital: {country.capital ? country.capital : "N/A"}</p>
-                    <p>Region: {country.region ? country.region : "N/A"}</p>
-                    <p>Population: {country.population ? country.population : "N/A"}</p>
-                    <p>Demonym: {country.demonym ? country.demonym : "N/A"}</p>
-                    <p>Border: {country.borders.length > 0 ? country.borders.map(b => b).join(", ") : "N/A"}</p>
-                    <CustomButton name={"go back"} />
-                </Paper>
+                <h2>Basic info</h2>
+                <div id="country-info-wrapper">
+                    <div className="item1">
+                        <p>Name: {country.name} </p>
+                        <p>Capital: {country.capital ? country.capital : "N/A"}</p>
+                        <p>Region: {country.region ? country.region : "N/A"}</p>
+                    </div>
+                    <div className="item2">
+                        <p>Population: {country.population ? country.population : "N/A"}</p>
+                        <p>Demonym: {country.demonym ? country.demonym : "N/A"}</p>
+                        <p>Languages: {country.languages.length > 0 ? country.languages.map(n => n.name).join(", ") : "N/A"}</p>
+                    </div>
+                    <div className="item3">
+                        <div className="flag-frame">
+                            <img className="flag-image" src={country.flag} alt={`flag of ${country.name}`} />
+                        </div>
+                    </div>
+
+                </div>
+                <CustomButton name={"go back"} />
             </Container>
         </>
     );

@@ -1,5 +1,17 @@
+body{
+    overflow-x: hidden;
+}
+
+p{
+    font-family: 'Martel Sans', sans-serif;
+}
+
 h2{
     text-align: center;
+}
+
+.map{
+    width: 30px;
 }
 
 #country-info-wrapper{
@@ -15,11 +27,9 @@ h2{
 
 .item1{
     order: 1;
-    /* justify-self: center; */
 }
 .item2{
     order: 2;
-    /* justify-self: center; */
 }
 
 .item3{
@@ -29,7 +39,12 @@ h2{
 
 .flag-image{
     width: 20rem;
-    border: 1px solid black;
+}
+
+@media only screen and (max-width: 1200px){
+    .flag-image{
+        width: 17rem;
+    }
 }
 
 @media only screen and (max-width:768px){
@@ -47,6 +62,33 @@ h2{
         order:3;
     }
     .flag-image{
-        width: 15rem;
+        width: 14rem;
+    }
+}
+
+@media only screen and (max-width: 557px){
+    #country-info-wrapper{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr; 
+    }
+
+    .item{
+    }
+
+    .item3{
+        order:3;
+        grid-column: span 1;
+        grid-row: span 2;
+        align-self: center;
+    }
+    .item1{
+        order:2;
+        
+    }
+    .item2{
+        order:1;
+    }
+    .flag-image{
+        width: 14rem;
     }
 }

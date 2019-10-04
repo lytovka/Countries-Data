@@ -16,8 +16,9 @@ const Country = ({ country, searchAction }) => {
     return (
         <Grid item xs={12} sm={6} md={4} lg={3}>
             <Paper className={classes.paper}>
-                <div style={{ backgroundColor: "7e57c2" }} onClick={() => handleCountryClick(country.name)}>
+                <div onClick={() => handleCountryClick(country.name)}>
                     <img src={country.flag} className={classes.image} alt={"flag of " + country.name} />
+                    <hr className={classes.horizontalLine} />
                     <p>{country.name}</p>
                 </div>
             </Paper>

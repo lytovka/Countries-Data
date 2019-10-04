@@ -13,6 +13,7 @@ export const footerStyles = makeStyles(theme => ({
         padding: theme.spacing(3),
         marginTop: 'auto',
         backgroundColor: '#eeeeee',
+        width: "100vw",
     },
 }));
 
@@ -41,10 +42,18 @@ export const countryCardStyles = makeStyles(theme => ({
         borderRadius: "10%",
     },
     paper: {
-        width: '15rem',
+        width: '12.5rem',
         height: '10rem',
         textAlign: 'center',
+        transitionDuration: ".3s",
+        transitionProperty: "transform",
         color: theme.palette.text.secondary,
+        '&:hover':{
+            transform: "scale(1.2)",
+        }
+    },
+    horizontalLine: {
+        width: "75%",
     },
 }));
 

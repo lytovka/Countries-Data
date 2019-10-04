@@ -5,17 +5,19 @@ import serviceCountries from '../services/countries';
 import { holidaysAction } from '../reducers/holidaysReducer';
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Paper from '@material-ui/core/Paper';
 import CustomButton from './CustomButton';
 import TopBar from '../components/TopBar';
 import "../styles/styles.css";
+import { countryCardStyles } from '../styles/styles';
 
 const CountryData = ({ country, holidays, holidaysAction }) => {
+
+    const classes = countryCardStyles();
 
     const [map, setMap] = useState({
         latitude: country.latlng[0],
         longitude: country.latlng[1],
-        width: "100%",
-        height: "30vh",
         zoom: country.area ? 3 : 5,
     })
 
@@ -34,8 +36,10 @@ const CountryData = ({ country, holidays, holidaysAction }) => {
         <>
             <CssBaseline />
             <TopBar caption={country.name} />
-            <ReactMapGl
+            <ReactMapGl className="map"
                 {...map}
+                width={"100vw"}
+                height={"30vh"}
                 mapStyle="mapbox://styles/lytovka/cjzoa990q2hd71co6gvj21naq"
                 onViewportChange={(map) => setMap(map)}
                 mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
@@ -44,23 +48,25 @@ const CountryData = ({ country, holidays, holidaysAction }) => {
             <Container maxWidth="md">
                 <h2>Basic info</h2>
                 <div id="country-info-wrapper">
-                    <div className="item1">
+                    <div className="item item1">
                         <p>Name: {country.name} </p>
                         <p>Capital: {country.capital ? country.capital : "N/A"}</p>
                         <p>Region: {country.region ? country.region : "N/A"}</p>
                     </div>
-                    <div className="item2">
+                    <div className="item item2">
                         <p>Population: {country.population ? country.population : "N/A"}</p>
                         <p>Demonym: {country.demonym ? country.demonym : "N/A"}</p>
                         <p>Languages: {country.languages.length > 0 ? country.languages.map(n => n.name).join(", ") : "N/A"}</p>
                     </div>
-                    <div className="item3">
+                    <div className="item item3">
                         <div className="flag-frame">
                             <img className="flag-image" src={country.flag} alt={`flag of ${country.name}`} />
                         </div>
                     </div>
 
                 </div>
+
+                <h3>Holidays</h3>
                 <CustomButton name={"go back"} />
             </Container>
         </>

@@ -27,14 +27,12 @@ const Search = (props) => {
                         <Grid item>
                             <TextField
                                 id="margin-normal"
-                                style={{ textAlign: "right" }}
                                 value={search}
                                 className={classes.textField}
                                 onChange={handleOnChange}
                                 placeholder="Type a country..."
                                 variant="outlined"
-                                autoComplete="off"
-                            />
+                                autoComplete="off"/>
                         </Grid>
                     </Grid>
                 </>

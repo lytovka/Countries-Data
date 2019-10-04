@@ -64,7 +64,6 @@ const Countries = (props) => {
     }
 
     const showCountryData = (country) => {
-        console.log('found olololo')
         return (
             <>
                 <CountryData country={country} />
